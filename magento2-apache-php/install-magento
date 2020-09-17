@@ -1,0 +1,24 @@
+#!/bin/bash
+
+sleep 2
+echo "checking .. permission for execute magento"
+chmod u+x bin/magento
+
+sleep 2
+echo "checking ...install magento"
+#bin/magento setup:install --backend-frontname=admin --db-host=mysql --db-name=magento --db-user=root --db-password=root --base-url=http://local.domain.com --language=pt_BR --timezone=America/Sao_Paulo --currency=BRL --use-rewrites=1 --use-secure=1 --base-url-secure=https://local.domain.com --admin-user=user --admin-password=senha123 --use-sample-data --admin-firstname=User --admin-lastname=Lastname --admin-email=rsurfings@gmail.com
+
+sleep 2
+echo "checking ... 644 permission to files"
+find . -type f -exec chmod 644 {} \;
+
+sleep 2
+echo "checking ... 755 permission to diretory"
+find . -type d -exec chmod 755 {} \;
+
+sleep 2
+echo "checking ... 777 permission for magento public folders"
+chmod 777 -R {pub,var,generated}
+
+
+#find . -type f -exec chmod 644 {} \; && find . -type d -exec chmod 755 {} \; && chmod 777 -R {pub,var,generated}
