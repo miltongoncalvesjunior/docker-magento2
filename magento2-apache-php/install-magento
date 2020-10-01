@@ -8,6 +8,8 @@ sleep 2
 echo "checking for magento install"
 #bin/magento setup:install --backend-frontname=admin --db-host=mysql --db-name=magento --db-user=root --db-password=root --base-url=http://local.domain.com --language=pt_BR --timezone=America/Sao_Paulo --currency=BRL --use-rewrites=1 --use-secure=1 --base-url-secure=https://local.domain.com --admin-user=user --admin-password=senha123 --use-sample-data --admin-firstname=User --admin-lastname=Lastname --admin-email=rsurfings@gmail.com
 
+chown -R www-data:www-data .
+
 sleep 2
 echo "checking for files permission"
 find . -type f -exec chmod 644 {} \;
@@ -23,5 +25,3 @@ chmod 777 -R {pub,var,generated}
 sleep 2
 echo "checking for magento cli command permissions"
 chmod u+x bin/magento
-
-chown -R www-data:www-data .
