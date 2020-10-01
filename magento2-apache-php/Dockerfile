@@ -8,10 +8,9 @@ ARG user=www-data
 
 WORKDIR ${INSTALL_DIR}
 
-RUN usermod -u 1000 www-data
-RUN usermod -a -G users www-data
-USER ${user}
-#RUN chsh -s /bin/bash ${user}
+# add group user
+RUN usermod -u 1000 ${user}
+RUN usermod -a -G users ${user}
 
 # update and install dependency
 RUN apt-get update \
@@ -30,6 +29,7 @@ RUN apt-get update \
     && php -r "readfile('http://getcomposer.org/installer');" | php -- --install-dir=/usr/bin/ --filename=composer \
   && apt-get clean
 
+# install php ext
 RUN docker-php-ext-configure \
     gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/; \
   docker-php-ext-install \
@@ -79,9 +79,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # adding shell install magento
 ADD ./install-magento /usr/local/bin/install-magento
+
 # permission for exec
 RUN chmod u+x /usr/local/bin/install-magento
 
-RUN chown -R www-data:www-data .
-
-# ENTRYPOINT [ "/usr/local/bin/install-magento.sh" ]
+RUN chown -R ${user}:${user} .
