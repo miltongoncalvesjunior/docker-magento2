@@ -5,3 +5,13 @@ This repository allows the creation of a Docker environment that meets
 
 ## Architecture
 ![Architecture overview](docs/architecture.png "Architecture")
+
+## Usage
+### Quick Start
+Commands should be executed in cloned target folder 
+```
+# Build and mount containers (default: php-7.2)
+docker-composer up -d
+
+```
+
