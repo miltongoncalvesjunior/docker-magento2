@@ -12,6 +12,9 @@ Commands should be executed in cloned target folder
 ```
 # Build and mount containers (default: php-7.2)
 docker-composer up -d
-
 ```
-
+### Preparing magento install
+```
+# Checking and set permissions
+docker exec -it web install-magento
+```
