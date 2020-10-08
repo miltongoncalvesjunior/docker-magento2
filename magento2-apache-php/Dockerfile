@@ -71,9 +71,6 @@ RUN a2enmod rewrite
 RUN echo "memory_limit=2048M" > /usr/local/etc/php/conf.d/memory-limit.ini
 RUN echo "extension=imagick.so" >> /etc/php.ini 
 
-# authentication for magento
-COPY ./auth.json .
-
 # cleaning and removing temporary archives
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

@@ -19,8 +19,13 @@ echo "checking for diretory permission"
 find . -type d -exec chmod 755 {} \;
 
 sleep 2
-echo "checking for public diretory permissions"
-chmod 777 -R {pub,var,generated}
+echo "checking for permissions diretorys pub,var,generated"
+#chmod 777 -R {pub,var,generated}
+find ./var -type d -exec chmod 777 {} \;
+find ./pub/media -type d -exec chmod 777 {} \;
+find ./pub/static -type d -exec chmod 777 {} \;
+find ./app/etc -exec chmod 777 {} \;
+find ./app/etc/*.xml -exec chmod 644 {} \;
 
 sleep 2
 echo "checking for magento cli command permissions"
