@@ -11,7 +11,7 @@ This repository allows the creation of a Docker environment that meets
 Commands should be executed in cloned target folder 
 ```
 # Build and mount containers (default: php-7.2)
-docker-composer up -d
+docker-compose up -d
 ```
 ### Preparing magento install
 ```
